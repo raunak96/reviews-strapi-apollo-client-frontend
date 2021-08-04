@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Header from "./Header";
 
-const Layout = ({ title, keywords, description, children }) => {
+const Layout = ({ title, keywords, description, children, categories }) => {
 	return (
 		<div className="App">
 			<Head>
@@ -9,7 +9,7 @@ const Layout = ({ title, keywords, description, children }) => {
 				<meta name="description" content={description} />
 				<meta name="keywords" content={keywords.join(", ")} />
 			</Head>
-			<Header />
+			<Header categories={categories} />
 			<div>{children}</div>
 		</div>
 	);

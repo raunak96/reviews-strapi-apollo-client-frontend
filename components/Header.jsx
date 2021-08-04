@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const Header = () => {
+const Header = ({ categories }) => {
 	return (
 		<div className="site-header">
 			<Link href="/">
@@ -8,6 +8,16 @@ const Header = () => {
 					<h1>Ninja Reviews</h1>
 				</a>
 			</Link>
+			<nav className="categories">
+				<span>Filter reviews by category: </span>
+				{categories?.map(category => (
+					<Link
+						key={category.id}
+						href={`/categories/${category.name}`}>
+						<a>{category.name}</a>
+					</Link>
+				))}
+			</nav>
 		</div>
 	);
 };

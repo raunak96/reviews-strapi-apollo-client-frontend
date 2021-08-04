@@ -1,5 +1,6 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/dist/client/router";
+import ReactMarkdown from "react-markdown";
 import Layout from "../../components/Layout";
 import { GET_ALL_REVIEWS, GET_REVIEW_BY_SLUG } from "../../lib/api";
 import { addApolloState, initializeApollo } from "../../lib/apolloClient";
@@ -14,11 +15,15 @@ const ReviewDetailsPage = ({ slug }) => {
 	if (router.isFallback) return <p>Loading...</p>;
 	if (error) return <p>Error ☹️</p>;
 	return (
-		<Layout title={`${review?.title} | Review`}>
+		<Layout
+			title={`${review?.title} | Review`}
+			categories={data.categories}>
 			<div className="review-card review-card-full">
 				<div className="rating">{review?.rating}</div>
 				<h2>{review?.title}</h2>
-				<p className="full-description">{review?.body}</p>
+				<ReactMarkdown className="full-description">
+					{review?.body}
+				</ReactMarkdown>
 			</div>
 		</Layout>
 	);

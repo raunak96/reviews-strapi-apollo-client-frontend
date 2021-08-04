@@ -59,7 +59,8 @@ a {
 .review-card h2 {
 	margin-bottom: 0;
 }
-.review-card small {
+
+.review-card a small {
 	margin-right: 10px;
 	color: #777;
 }
@@ -71,5 +72,13 @@ a {
 @media (min-width: 920px) {
 	.review-card-full {
 		width: 70%;
+	}
+}
+@media (max-width: 500px) {
+	.site-header .categories {
+		text-align: center;
+	}
+	.site-header h1 {
+		text-align: center;
 	}
 }

@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
-import Link from "next/link";
 import Layout from "../components/Layout";
+import ReviewCard from "../components/ReviewCard";
 import { GET_ALL_REVIEWS } from "../lib/api";
 import { initializeApollo, addApolloState } from "../lib/apolloClient";
 
@@ -14,24 +14,16 @@ const HomePage = () => {
 	const {
 		loading,
 		error,
-		data: { reviews } = {},
+		data: { reviews, categories } = {},
 	} = useQuery(GET_ALL_REVIEWS);
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error ☹️</p>;
 
 	return (
-		<Layout>
+		<Layout categories={categories}>
 			{reviews.map(review => (
-				<div key={review.id} className="review-card">
-					<div className="rating">{review.rating}</div>
-					<h2>{review.title}</h2>
-					<small>Console List</small>
-					<p>{review.body.substring(0, 200)}...</p>
-					<Link href={`/details/${review.slug}`}>
-						<a>Read More...</a>
-					</Link>
-				</div>
+				<ReviewCard key={review.id} review={review} />
 			))}
 		</Layout>
 	);
