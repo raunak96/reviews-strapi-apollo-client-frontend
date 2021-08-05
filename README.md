@@ -1,3 +1,4 @@
+[![wakatime](https://wakatime.com/badge/github/raunak96/reviews-strapi-apollo-client-frontend.svg)](https://wakatime.com/badge/github/raunak96/reviews-strapi-apollo-client-frontend)
 # NextJs + Apollo Client + Strapi CMS
 
 - [Apollo Client](https://www.apollographql.com/client/) is a GraphQL client that allows you to easily query the exact data you need from a **GraphQL server** - which is provided as plugin in Strapi which was installed there and on running the backend starts at `http://localhost:1337/graphql`.
