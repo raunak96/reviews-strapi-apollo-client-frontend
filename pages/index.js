@@ -15,7 +15,7 @@ const HomePage = () => {
 		loading,
 		error,
 		data: { reviews, categories } = {},
-	} = useQuery(GET_ALL_REVIEWS);
+	} = useQuery(GET_ALL_REVIEWS, {});
 
 	if (loading) return <p>Loading...</p>;
 	if (error) return <p>Error ☹️</p>;
@@ -32,14 +32,20 @@ const HomePage = () => {
 export async function getStaticProps() {
 	const apolloClient = initializeApollo();
 
-	await apolloClient.query({
-		query: GET_ALL_REVIEWS,
-	});
+	try {
+		await apolloClient.query({
+			query: GET_ALL_REVIEWS,
+		});
 
-	return addApolloState(apolloClient, {
-		props: {},
-		revalidate: 10,
-	});
+		return addApolloState(apolloClient, {
+			props: {},
+			revalidate: 10,
+		});
+	} catch (error) {
+		return {
+			notFound: true,
+		};
+	}
 }
 
 export default HomePage;

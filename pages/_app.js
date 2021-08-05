@@ -1,4 +1,5 @@
 import { ApolloProvider } from "@apollo/client";
+import { UserProvider } from "../context/user";
 import { useApollo } from "../lib/apolloClient";
 import "../styles/globals.css";
 
@@ -7,7 +8,9 @@ export default function App({ Component, pageProps }) {
 
 	return (
 		<ApolloProvider client={apolloClient}>
-			<Component {...pageProps} />
+			<UserProvider>
+				<Component {...pageProps} />
+			</UserProvider>
 		</ApolloProvider>
 	);
 }
