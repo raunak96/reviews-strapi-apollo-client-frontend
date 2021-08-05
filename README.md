@@ -11,3 +11,5 @@ npx create-next-app -e with-apollo project-name
 # or
 yarn create next-app -e with-apollo project-name
 ```
+
+The **strapi backend** can be found [here](https://github.com/raunak96/reviews-strapi-apollo-client-backend).
